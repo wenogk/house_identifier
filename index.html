@@ -1,0 +1,38 @@
+<html>
+<head>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script src='scripts/snowfall.min.jquery.js'></script>
+	<script type="text/javascript">
+$(document).ready(function(){
+			
+			$(".buts").click(function(){
+					
+			var index=$('.index').val();
+			var url='house2.php?i=' + index;
+			var val=index % 4;
+			if(val=='0') { var house="Ruby"; var col="red"; }
+			if(val=='1') { var house="Sapphire"; var col="blue"; }
+			if(val=='2') { var house="Emerald"; var col="green"; }
+			if(val=='3') { var house="Topaz"; var col="yellow"; }
+		
+				document.body.className  = "lol";
+				$('.titlec').html('');
+				$('.titlec').html('You house is, ' + house);
+				$(document).snowfall('clear');
+				$(document).snowfall({shadow : true,flakeColor: col, round : true,  minSize: 5, maxSize:25}); // add shadows
+			
+			});
+			$(".buts2").click(function(){
+			
+			location.reload();
+			});
+			
+
+		});
+</script>
+</head>
+<body>
+<? include('scripts/house.php'); ?>
+<div class="lol" style="position: fixed;top: 50%;left: 50%;margin-top: -50px;margin-left: -100px;">
+<h1 class="titlec">Enter your index number</h1><input type="text" class="index" /><button  class="buts">Go!</button>
+</div></body></html>
